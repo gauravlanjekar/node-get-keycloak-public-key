@@ -1,5 +1,5 @@
 {
-  "name": "get-keycloak-public-key",
+  "name": "get-keycloak-public-key-node6",
   "version": "1.0.1",
   "description": "Fetches the openid-connect PEM public key for a specific KID for validating JWT provided by Keycloak.",
   "keywords": [
@@ -13,12 +13,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/aquator/node-get-keycloak-public-key.git"
+    "url": "https://github.com/gauravlanjekar/node-get-keycloak-public-key.git"
   },
   "scripts": {
     "test": "tap test.js"
   },
-  "author": "István Rábel <thraex.aquator@gmail.com>",
+  "author": "gauravlanjekar",
   "license": "MIT",
   "devDependencies": {
     "nock": "^9.0.14",

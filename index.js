@@ -11,14 +11,20 @@ module.exports = function KeycloakPublicKeyFetcher(url, realm) {
   };
 };
 
-async function fetch(url, kid) {
-  const response = await getJson(url);
-  const key = getKey(response, kid);
-  if (!key) {
-    throw new Error(`Can't find key for kid "${kid}" in response.`);
-  }
-  verify(key);
-  return getPublicKey(key.n, key.e);
+function fetch(url, kid) {
+  const response =  getJson(url)
+  .then(
+    const key = getKey(response, kid);
+    if (!key) {
+      throw new Error(`Can't find key for kid "${kid}" in response.`);
+    }
+    verify(key);
+    return getPublicKey(key.n, key.e)
+  );
+
+  return new Promise((resolve,reject) => {
+    resolve(response);
+  });
 }
 
 function getJson(url) {

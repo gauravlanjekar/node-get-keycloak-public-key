@@ -1,13 +1,13 @@
 {
   "name": "get-keycloak-public-key-node6",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Fetches the openid-connect PEM public key for a specific KID for validating JWT provided by Keycloak.",
   "keywords": [
     "keycloak",
     "JWT",
     "PEM"
   ],
-  "main": "index.js",
+  "main": "transpiled/index.js",
   "files": [
     "test.js"
   ],
@@ -21,6 +21,10 @@
   "author": "gauravlanjekar",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "nock": "^9.0.14",
     "tap": "^10.7.2"
   }

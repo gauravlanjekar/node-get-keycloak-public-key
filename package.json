@@ -1,6 +1,6 @@
 {
   "name": "get-keycloak-public-key-node6",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "Fetches the openid-connect PEM public key for a specific KID for validating JWT provided by Keycloak.",
   "keywords": [
     "keycloak",
@@ -9,7 +9,8 @@
   ],
   "main": "transpiled/index.js",
   "files": [
-    "test.js"
+    "test.js",
+    "transpiled"
   ],
   "repository": {
     "type": "git",

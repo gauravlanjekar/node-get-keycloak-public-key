@@ -1,5 +1,45 @@
 'use strict';
 
+var _fetch = function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url, kid) {
+    var response, key;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return getJson(url);
+
+          case 2:
+            response = _context.sent;
+            key = getKey(response, kid);
+
+            if (key) {
+              _context.next = 6;
+              break;
+            }
+
+            throw new Error('Can\'t find key for kid "' + kid + '" in response.');
+
+          case 6:
+            verify(key);
+            return _context.abrupt('return', getPublicKey(key.n, key.e));
+
+          case 8:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+
+  return function _fetch(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 var http = require('http');
 var https = require('https');
 
@@ -14,19 +54,6 @@ module.exports = function KeycloakPublicKeyFetcher(url, realm) {
     }
   };
 };
-
-function _fetch(url, kid) {
-  return getJson(url).then(function (response) {
-    var key = getKey(response, kid);
-    if (!key) {
-      throw new Error('Can\'t find key for kid "' + kid + '" in response.');
-    }
-    verify(key);
-    return new Promise(function (resolve, reject) {
-      resolve(getPublicKey(key.n, key.e));
-    });
-  });
-}
 
 function getJson(url) {
   return new Promise(function (resolve, reject) {
